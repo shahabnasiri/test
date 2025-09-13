@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>magic 8 ball</title>
+  <style>
+
+    /* Spinner */
+.loader {
+  font-size: 30px;           /* اندازه توپ */
+  display: inline-block;
+  margin: auto;
+  animation: shake 0.1s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); } /* بالا رفتن 10px */
+}
+
+
+    body{
+      zoom: 400%;
+      font-family:system-ui;
+      padding:0;
+      direction:rtl;
+      text-align:center;
+      background-color: #004616;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 22vh;
+      margin: 0;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    button{
+      padding:10px 18px;
+      border:none;
+      border-radius:8px;
+      background:#00329f;
+      color:#9c9c9c;
+      font-size:16px;
+      cursor:pointer;  
+      transition: background-color 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease, color 0.6s ease;
+    }
+    button:hover{
+      box-shadow: 0 0 10px #fff, 0 0 20px #9350e4, 0 0 30px #9350e4; 
+      background-color: #0049e6;
+      color: #ffffff;
+      transform: scale(1.01);
+    }
+    #output{
+      margin-top:20px;
+      font-size:20px;
+      font-weight:bold;
+      width:210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height:56px;
+      border-radius: 4px;
+      background-color: rgb(75, 142, 164);
+    }
+  </style>
+</head>
+<body>
+  <h2 style="color: #c2c2c2;">"" magic 8 ball ""</h2>
+
+  <button onclick="showRandomNumber()">click and see your luck</button>
+
+  <div id="output">ask from magic 8 ball</div>
+
+  <script>
+    const words = ["It is certain","It is decidedly so","Without a doubt","Yes definitely","You may rely on it","As I see it, yes","Most likely","Outlook good","Yes","Signs point to yes","Reply hazy, try again","Ask again later","Better not tell you now","Cannot predict now","Concentrate and ask again","Don't count on it","My reply is no","My sources say no","Outlook not so good","Very doubtful"];
+    /* function showRandomNumber(){
+      const randomNumber = Math.floor(Math.random() * words.length);
+      document.getElementById('output').textContent = words[randomNumber];
+    } */
+
+    function showRandomNumber(){
+  const outputDiv = document.getElementById('output');
+  
+  // ابتدا متن حالت انتظار را نمایش بده
+  outputDiv.innerHTML = '<div class="loader">🎱</div>';  
+  // بعد از 2 ثانیه جواب واقعی نمایش داده شود
+  setTimeout(() => {
+    const randomNumber = Math.floor(Math.random() * words.length);
+    outputDiv.textContent = words[randomNumber];
+  }, 2000); // 2000 میلی‌ثانیه = 2 ثانیه
+}
+  </script>
+</body>
+</html>
+
